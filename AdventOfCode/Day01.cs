@@ -37,14 +37,14 @@ public class Day01 : BaseDay
 
     private string ProcessInput1(List<string> input)
     {
-        occurenceList = new Dictionary<int, int>();
         GenerateCollection(input);
         int sum = 0;
 
         firstpositions.Sort();
         lastpositions.Sort();
 
-        for(var i = 0; i < firstpositions.Count(); i++)
+        var len = firstpositions.Count;
+        for (var i = 0; i < len; i++)
         {
             sum += Math.Abs(firstpositions[i] - lastpositions[i]);
         }
