@@ -86,42 +86,34 @@ public class Day11 : BaseDay
         //    //{
         //    //    var stones = StoneList[y];
         //    //    var newList = new List<string>();
-        //    //    if (cache.ContainsKey(stones))
+        //    //    foreach (var stone in stones)
         //    //    {
-        //    //        newList = cache[stones];
-        //    //    }
-        //    //    else
-        //    //    {
-        //    //        foreach (var stone in stones)
+        //    //        if (stone == "0")
         //    //        {
-        //    //            if (stone == "0")
-        //    //            {
-        //    //                newList.Add("1");
-        //    //            }
-        //    //            else if (stone.Length % 2 == 0)
-        //    //            {
-        //    //                var splits = stone.Split(stone.Length / 2);
-        //    //                var newSplit = splits.Select(q => string.Join("", q)).ToList();
-        //    //                var first = long.Parse(newSplit[0]);
-        //    //                var second = long.Parse(newSplit[1]);
-        //    //                newList.Add(first.ToString());
-        //    //                newList.Add(second.ToString());
-        //    //            }
-        //    //            else
-        //    //            {
-        //    //                var newStone = long.Parse(stone) * 2024;
-        //    //                newList.Add(newStone.ToString());
-        //    //            }
+        //    //            newList.Add("1");
         //    //        }
-        //    //        cache.Add(stones, newList);
+        //    //        else if (stone.Length % 2 == 0)
+        //    //        {
+        //    //            var splits = stone.Split(stone.Length / 2);
+        //    //            var newSplit = splits.Select(q => string.Join("", q)).ToList();
+        //    //            var first = long.Parse(newSplit[0]);
+        //    //            var second = long.Parse(newSplit[1]);
+        //    //            newList.Add(first.ToString());
+        //    //            newList.Add(second.ToString());
+        //    //        }
+        //    //        else
+        //    //        {
+        //    //            var newStone = long.Parse(stone) * 2024;
+        //    //            newList.Add(newStone.ToString());
+        //    //        }
         //    //    }
         //    //    FinalStones.Add(newList);
         //    //}
         //    //var newStonelist = FinalStones.SelectMany(stone => stone).ToList();
         //    //StoneList = new List<List<string>>(new List<List<string>>() { newStonelist });
         //}
-        //sum = StoneList.Capacity;
-        #endregion Original Brute Force Part 2
+        //sum = StoneList.Sum(q => q.Sum());
+        #endregion Original Brute Force Part 1
         sum = cacheList.Sum(q => q.Value);
         return $"{sum}";
     }
@@ -188,46 +180,38 @@ public class Day11 : BaseDay
         #region Original Brute Force Part 2
         //for (int x = 0; x < 50; x++)
         //{
-        //    FinalStones = new List<List<string>>();
-        //    for (int y = 0; y < StoneList.LongCount(); y++)
-        //    {
-        //        var stones = StoneList[y];
-        //        var newList = new List<string>();
-        //        if (cache.ContainsKey(stones))
-        //        {
-        //            newList = cache[stones];
-        //        }
-        //        else
-        //        {
-        //            foreach (var stone in stones)
-        //            {
-        //                if (stone == "0")
-        //                {
-        //                    newList.Add("1");
-        //                }
-        //                else if (stone.Length % 2 == 0)
-        //                {
-        //                    var splits = stone.Split(stone.Length / 2);
-        //                    var newSplit = splits.Select(q => string.Join("", q)).ToList();
-        //                    var first = long.Parse(newSplit[0]);
-        //                    var second = long.Parse(newSplit[1]);
-        //                    newList.Add(first.ToString());
-        //                    newList.Add(second.ToString());
-        //                }
-        //                else
-        //                {
-        //                    var newStone = long.Parse(stone) * 2024;
-        //                    newList.Add(newStone.ToString());
-        //                }
-        //            }
-        //            cache.Add(stones, newList);
-        //        }
-        //        FinalStones.Add(newList);
-        //    }
-        //    var newStonelist = FinalStones.SelectMany(stone => stone).ToList();
-        //    StoneList = new List<List<string>>(new List<List<string>>() { newStonelist });
+        //    //FinalStones = new List<List<string>>();
+        //    //for (int y = 0; y < StoneList.LongCount(); y++)
+        //    //{
+        //    //    var stones = StoneList[y];
+        //    //    var newList = new List<string>();
+        //    //    foreach (var stone in stones)
+        //    //    {
+        //    //        if (stone == "0")
+        //    //        {
+        //    //            newList.Add("1");
+        //    //        }
+        //    //        else if (stone.Length % 2 == 0)
+        //    //        {
+        //    //            var splits = stone.Split(stone.Length / 2);
+        //    //            var newSplit = splits.Select(q => string.Join("", q)).ToList();
+        //    //            var first = long.Parse(newSplit[0]);
+        //    //            var second = long.Parse(newSplit[1]);
+        //    //            newList.Add(first.ToString());
+        //    //            newList.Add(second.ToString());
+        //    //        }
+        //    //        else
+        //    //        {
+        //    //            var newStone = long.Parse(stone) * 2024;
+        //    //            newList.Add(newStone.ToString());
+        //    //        }
+        //    //    }
+        //    //    FinalStones.Add(newList);
+        //    //}
+        //    //var newStonelist = FinalStones.SelectMany(stone => stone).ToList();
+        //    //StoneList = new List<List<string>>(new List<List<string>>() { newStonelist });
         //}
-        //sum = StoneList.Sum(q => q.Count);
+        //sum = StoneList.Sum(q => q.Sum());
         #endregion Original Brute Force Part 2
         sum = cacheList.Sum(q => q.Value);
         return $"{sum}";
