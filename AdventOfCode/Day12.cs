@@ -1,5 +1,4 @@
-﻿using System.Runtime.ConstrainedExecution;
-using Utilities;
+﻿using Utilities;
 
 namespace AdventOfCode;
 
