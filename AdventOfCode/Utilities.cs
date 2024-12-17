@@ -48,6 +48,27 @@ namespace Utilities
                 _ => throw new ArgumentException()
             };
         }
+        public static CompassDirection TurnClockwise(this CompassDirection currentDirection)
+        {
+            return currentDirection switch
+            {
+                CompassDirection.N => CompassDirection.E,
+                CompassDirection.E => CompassDirection.S,
+                CompassDirection.S => CompassDirection.W,
+                CompassDirection.W => CompassDirection.N,
+            };
+        }
+
+        public static CompassDirection TurnCounterClockwise(this CompassDirection currentDirection)
+        {
+            return currentDirection switch
+            {
+                CompassDirection.N => CompassDirection.W,
+                CompassDirection.E => CompassDirection.N,
+                CompassDirection.S => CompassDirection.E,
+                CompassDirection.W => CompassDirection.S,
+            };
+        }
 
         /// <summary>
         /// Turns a string into a list of ints. 
