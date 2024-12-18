@@ -251,9 +251,4 @@ public class Day17 : BaseDay
 
     public override ValueTask<string> Solve_2() => new(ProcessInput2());
 
-    public class Path
-    {
-        public char path { get; set; }
-        public int visited { get; set; }
-    }
 }
