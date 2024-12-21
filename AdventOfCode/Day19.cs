@@ -1,7 +1,4 @@
-﻿using System.Text;
-using Utilities;
-
-namespace AdventOfCode;
+﻿namespace AdventOfCode;
 
 public class Day19 : BaseDay
 {
