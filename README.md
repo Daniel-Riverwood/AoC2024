@@ -47,7 +47,9 @@ Providing a **custom `Action<SolverConfiguration>`** to any of those methods ([a
 
 ## Notes
 - Not all the solutions are optimal, but overall the goal for this year was to have all 25 days running in under 1s in release mode, which has been accomplished:
+
     ![example time](time_output.png)
+
 - A note on the leaderboard below, some times are subject to estimates, as not full focus was on the AoC during that time (each day's problem came out at 7am, with normal workday and meetings)
 - Please note that the input's for each day are not included, to get the inputs, please head over to [Advent Of Code](https://adventofcode.com) for year 2024
 
