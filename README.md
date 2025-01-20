@@ -10,41 +10,6 @@ Output example:
 
 ![aochelper](https://user-images.githubusercontent.com/11148519/142051856-16d9d5bf-885c-44cd-94ae-6f678bcbc04f.gif)
 
-## Basic usage
-
-- Create one class per advent day, following `DayXX` or `Day_XX` naming convention and implementing `AoCHelper.BaseDay`.
-- Place input files under `Inputs/` dir, following `XX.txt` convention.
-- Read the input content from `InputFilePath` and solve the puzzle by implementing `Solve_1()` and `Solve_2()`!
-
-**By default, only your last problem will be solved when running the project**. You can change that by behavior by modifying `Program.cs`.
-
-Invoking **different methods**:
-
-- `Solver.SolveAll();` → solves all the days.
-
-- `Solver.SolveLast();` → solves only the last day.
-
-- `Solver.Solve<Day_XX>();` → solves only day `XX`.
-
-- `Solver.Solve(new uint[] { XX, YY });` → solves only days `XX` and `YY`.
-
-- `Solver.Solve(new [] { typeof(Day_XX), typeof(Day_YY) });` → same as above.
-
-Providing a **custom `Action<SolverConfiguration>`** to any of those methods ([availabe options described here](https://github.com/eduherminio/AoCHelper#customization)):
-
-- `Solver.SolveLast(opt => opt.ClearConsole = false);` → solves only the last day providing a custom configuration.
-
--
-    ```csharp
-    Solver.SolveAll(opt =>
-    {
-        opt.ShowConstructorElapsedTime = true;
-        opt.ShowTotalElapsedTimePerDay = true;
-        opt.ElapsedTimeFormatSpecifier = "F3";
-    });
-    ```
-    solves all the days providing a custom configuration.
-
 ## Notes
 - Not all the solutions are optimal, but overall the goal for this year was to have all 25 days running in under 1s in release mode, which has been accomplished:
 
