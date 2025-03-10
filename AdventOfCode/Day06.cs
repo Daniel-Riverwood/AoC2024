@@ -1,4 +1,5 @@
-﻿using Utilities;
+﻿using System.Collections.Concurrent;
+using Utilities;
 
 namespace AdventOfCode;
 
@@ -60,26 +61,19 @@ public class Day06 : BaseDay
 
     private string ProcessInput2()
     {
-        int sum = 0;
-        (int, int) prevPos = startingPosition;
-        CompassDirection prevDir = CompassDirection.N;
-        foreach (var position in seenPositions)
+        ConcurrentBag<int> result = new ConcurrentBag<int>();
+        seenPositions.AsParallel().ForAll(position =>
         {
-            if (position.Key == startingPosition) continue;
-            map[position.Key.Item1][position.Key.Item2] = '#';
-            if (IsLoop(prevPos, prevDir))
+            if (IsLoop(startingPosition, CompassDirection.N, position.Key))
             {
-                sum++;
+                result.Add(1);
             }
-            map[position.Key.Item1][position.Key.Item2] = '.';
-            prevPos = position.Key;
-            prevDir = position.Value;
-        }
+        });
 
-        return $"{sum}";
+        return $"{result.Sum()}";
     }
 
-    private bool IsLoop((int, int) start, CompassDirection lastdir)
+    private bool IsLoop((int, int) start, CompassDirection lastdir, (int x, int y) blocked)
     {
         var visited = new Dictionary<(int, int), int>();
         var currentPosition = start;
@@ -88,9 +82,10 @@ public class Day06 : BaseDay
 
         while (true)
         {
-            if (map[currentPosition.Item1][currentPosition.Item2] == '#')
+            if (map[currentPosition.Item1][currentPosition.Item2] == '#' ||
+                (currentPosition.Item1 == blocked.x && currentPosition.Item2 == blocked.y && blocked.y > -1 && blocked.x > -1))
             {
-                if(!visited.TryAdd(currentPosition, 1))
+                if (!visited.TryAdd(currentPosition, 1))
                 {
                     if (visited[currentPosition] > 2) return true;
                     visited[currentPosition]++;
@@ -99,7 +94,7 @@ public class Day06 : BaseDay
                 currentPosition = previous;
                 currentDirection = currentDirection.TurnClockwise();
             }
-            
+
             previous = currentPosition;
 
             currentPosition = GetNextPosition(currentPosition, currentDirection);
